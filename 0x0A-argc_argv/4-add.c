@@ -13,10 +13,10 @@
  */
 int main(int argc, char *argv[])
 {
-	int sum = 0;
+	int sum;
 	int num, i, j;
 
-
+sum = 0;
 	if (argc == 1)
 	{
 		printf("0\n");
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	}
 	for (i = 1; i < argc; i++)
 	{
-		for (j = 0; argv[j][i] != '\0'; j++)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
 			if (!isdigit(argv[i][j]))
 			{
