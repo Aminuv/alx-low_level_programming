@@ -3,9 +3,9 @@
 
 /**
 * *malloc_checked - allocates of memory using malloc
-* @b: number
+* @b: numbers
 *
-* Return: a pointer
+* Return: pointer
 */
 
 void *malloc_checked(unsigned int b)
