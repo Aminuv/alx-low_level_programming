@@ -1,11 +1,10 @@
 #include "lists.h"
 
 /**
- * ladd_node_end - adds a node to the end of the list
- * @head: address of the pointer
- * @str: field of node
- *
- * return: size of list
+ *add_node_end - adds a new node at the end of list.
+ *@head: contains base address of the list
+ *@str: string to be added to linked list
+ *Return: address of the new element, or NULL if it fails
  */
 
 list_t *add_node_end(list_t **head, const char *str)
