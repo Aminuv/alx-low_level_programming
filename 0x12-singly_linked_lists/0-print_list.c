@@ -16,9 +16,11 @@ int _strlen(char *s)
 	return (i);
 }
 /**
- * print_list - print the list
- * @h: the  head of the list
+ * print_list - print list
+ * @h: the  head of list
+ * Return: elements number
  */
+
 size_t print_list(const list_t *h)
 {
 	size_t i = 0;
