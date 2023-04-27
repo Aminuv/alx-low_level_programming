@@ -5,7 +5,6 @@
  *@s: length to checker
  * Return: integer
  */
-
 int _strlen(char *s)
 {
 	int i = 0;
@@ -16,11 +15,9 @@ int _strlen(char *s)
 		i++;
 	return (i);
 }
-
 /**
  * print_list - print the list
  * @h: the  head of the list
- * return: int
  */
 size_t print_list(const list_t *h)
 {
