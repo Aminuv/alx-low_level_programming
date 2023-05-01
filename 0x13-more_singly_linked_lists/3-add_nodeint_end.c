@@ -1,12 +1,12 @@
 #include "lists.h"
 
 /**
- * add_nodeint_end - Add a new node at the end of a lists.
- * @head: pointer to the head.
- * @n:the value.
- *
- * return: new node.
- */
+  * add_nodeint_end - add node at end of a list.
+  * @head: head of double pointer
+  * @n: a value.
+  *
+  * Return: pointer to new node.
+  */
 
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
