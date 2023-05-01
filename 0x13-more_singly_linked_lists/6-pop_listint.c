@@ -1,9 +1,10 @@
 #include "lists.h"
 
 /**
- * pop_listint - the head' pop of the node.
- * @head: pointer to the first node.
- *return: 0
+ * pop_listint - head's pops of rhe node list.
+ * @head: pointer to the first head.
+ *
+ * Return: 0
  */
 
 int pop_listint(listint_t **head)
