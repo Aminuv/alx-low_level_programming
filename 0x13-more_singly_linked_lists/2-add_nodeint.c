@@ -5,7 +5,7 @@
  * @head: pointer to the first head
  * @n:the new node
  *
- * return: if it failed NULL
+ * Return: the adr of the new element or NULL
  */
 
 listint_t *add_nodeint(listint_t **head, const int n)
