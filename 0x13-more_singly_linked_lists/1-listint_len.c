@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * listint_len - A Function returns the number of elements in a linked listint .
+ * listint_len - A Function returns the number of elements in a linked listint.
  * @h: The head node.
  *
  * Return: Number of elements.
