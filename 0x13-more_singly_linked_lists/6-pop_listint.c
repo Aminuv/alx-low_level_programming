@@ -3,7 +3,7 @@
 /**
  * pop_listint - the head' pop of the node.
  * @head: pointer to the first node.
- *
+ *return: 0
  */
 
 int pop_listint(listint_t **head)
@@ -12,9 +12,9 @@ int pop_listint(listint_t **head)
 	int n;
 
 	if (!head || !*head)
-		return;
+		return (0);
 
-	node = (*head->next);
+	node = (*head)->next;
 	n = (*head)->n;
 	*head = node;
 	return (n);
