@@ -30,8 +30,8 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 
 	for (i = 1; crt_node != NULL && i < index; i++)
 	{
-		crt_node = crt_node->next;
 		node = crt_node;
+		crt_node = crt_node->next;
 	}
 
 	if (crt_node == NULL)
