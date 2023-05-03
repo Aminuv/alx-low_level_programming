@@ -50,7 +50,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (head == l[i])
 		{
-			printf("-> [%p] %d\n", (void *)head, head->j);
+			printf("-> [%p] %d\n", (void *)head, head->n);
 			free(l);
 			return (j);
 		}
@@ -59,7 +59,7 @@ size_t print_listint_safe(const listint_t *head)
 	j++;
 	
 	l = mem(l, j, head);
-	printf("[%p] %d\n", (void *)head, head->j);
+	printf("[%p] %d\n", (void *)head, head->n);
 	head = head->next;
 
 	free(l);
