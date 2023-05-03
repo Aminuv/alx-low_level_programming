@@ -44,7 +44,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	j = 0;
 
-	if (head != NULL)
+	while (head != NULL)
 	{
 	for (i = 0; i < j; i++)
 	{
@@ -55,13 +55,11 @@ size_t print_listint_safe(const listint_t *head)
 			return (j);
 		}
 	}
-	}
 	j++;
-	
 	l = mem(l, j, head);
 	printf("[%p] %d\n", (void *)head, head->n);
 	head = head->next;
-
+	}
 	free(l);
 	return (j);
 }
