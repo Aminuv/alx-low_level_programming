@@ -9,19 +9,19 @@
 
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *p_node, *end-node;
+	listint_t *p_node, *end_node;
 
 	if (head == NULL)
 		return (NULL);
 
-	for (end = head->next; end_node != NULL; end_node = end_node->next)
+	for (end_node = head->next; end_node != NULL; end_node = end_node->next)
 	{
 		if (end_node == end_node->next)
 			return (end_node);
-		for (p_node = head; p_node != end_node; p_node p_node->next)
+		for (p_node = head; p_node != end_node; p_node = p_node->next)
 			
-			if ( p_node == end_node ->next);
-		return (end_node->next)
+			if (p_node == end_node->next)
+		return (end_node->next);
 	}
 	return (NULL);
 }
@@ -35,27 +35,32 @@ listint_t *find_listint_loop(listint_t *head)
 
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *next_n, *loop_n;
-	siz_t l;
-	int i = 0;
+	listint_t *next, *loop_n;
+	size_t l;
+	int i = 1;
 
 	if (h == NULL || *h == NULL)
-		return (NULL)
-			loop_n = find_listitloop(*h);
-	for (l = 0; *h != loop_n || loop && *h != NULL; *h = next_n)
-		l++;
-	next_n = (*h)->next_n;
-	if (*h == loop_n-<next_n)
+		return (0);
+
+	 loop_n = find_listint_loop(*h);
+	for (l = 0; (*h != loop_n || loop_n) && *h != NULL; *h = next)
 	{
-		if loop_n == loop_n->next_n)
+		l++;
+	next = (*h)->next;
+	if (*h == loop_n && i)
+	{
+		if (loop_n == loop_n->next)
 		{
 			free(*h);
 			break;
 		}
 		l++;
-		next_n = next_n->next;
+		next = next->next;
 		free((*h)->next);
-		loop = 0;
-	}
+		loop_n = 0;
+	} 
 	free(*h);
+	}
+	*h = NULL;
+	return (l);
 }
