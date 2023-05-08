@@ -12,7 +12,8 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int of, bw, text;
 
-	if (filename == NULL)
+	of = open(filename, O_WRONLY | O_APPEND);	
+	if (filename == NULL || of == -1)
 		return (-1);
 
 	if (text_content != NULL)
@@ -21,14 +22,10 @@ int append_text_to_file(const char *filename, char *text_content)
 			text++;
 	}
 
-	of = open(filename, O_WRONLY | O_APPEND);
-	if (of == -1)
-		return (-1);
-
-	bw = write(fd, text_content, text);
+	bw = write(of, text_content, text);
+	
 	close(of);
-
-
+	
 	if (bw == -1)
 		return (-1);
 
