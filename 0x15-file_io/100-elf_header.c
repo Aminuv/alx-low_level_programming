@@ -205,7 +205,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 
-	if (e_ident[EI_CLASS] == ELFCLASS32)
+	if else (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
 
 	else
@@ -213,7 +213,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - a Closes of an ELF file.
+ * close_elf - Closes of an ELF file.
  * @elf: The file descriptor.
  *
  * Description: exit code 98.
@@ -229,40 +229,38 @@ void close_elf(int elf)
 }
 
 /**
- * main - Displays the information contained in the
- *        ELF header at the start of an ELF file.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * main - the Displays of the information that contained.
+ * @argc: The number of the arguments.
+ * @argv: An array of pointer.
  *
  * Return: 0 on success.
- *
- * Description: If the file is not an ELF File or
- *              the function fails - exit code 98.
+ * Description: exit code 98.
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+
+int main(int __attribute__((__unused__)) arg_c, char *arg_v[])
 {
 	Elf64_Ehdr *header;
-	int o, r;
+	int a, b;
 
-	o = open(argv[1], O_RDONLY);
-	if (o == -1)
+	a = open(arg_v[1], O_RDONLY);
+	if (a == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", arg_v[1]);
 		exit(98);
 	}
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (header == NULL)
 	{
-		close_elf(o);
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		close_elf(a);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", arg_v[1]);
 		exit(98);
 	}
-	r = read(o, header, sizeof(Elf64_Ehdr));
-	if (r == -1)
+	r = read(a, header, sizeof(Elf64_Ehdr));
+	if (b == -1)
 	{
 		free(header);
-		close_elf(o);
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
+		close_elf(a);
+		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", arg_v[1]);
 		exit(98);
 	}
 
@@ -278,6 +276,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_entry(header->e_entry, header->e_ident);
 
 	free(header);
-	close_elf(o);
+	close_elf(a);
 	return (0);
 }

@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 
 #include <fcntl.h>
 #include <stdio.h>
