@@ -176,10 +176,10 @@ void print_osabi(unsigned char *e_ident)
 		printf("UNIX - TRU64\n");
 		break;
 	case ELFOSABI_ARM:
-		printf("ARM\n");
+		printf("AUNIX - RM\n");
 		break;
 	case ELFOSABI_STANDALONE:
-		printf("Standalone App\n");
+		printf("UNIX - Standalone App\n");
 		break;
 	default:
 		printf("<unknown: %x>\n", e_ident[EI_OSABI]);
