@@ -19,7 +19,7 @@ void close_elf(int elf);
 
 /**
  * check_elf - Checks if a file is an ELF file.
- * @e_ident: A pointer to an array containing the ELF magic numbers.
+ * @e_iden: A pointer to an array containing the ELF magic numbers.
  *
  * Description: If the file is not an ELF file - exit code 98.
  */
@@ -180,9 +180,10 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - the Prints the ABI version.
- * @e_ident: A pointer to an array.
+ * print_abi - type the ABI version of an ELF.
+ * @e_ident: A pointer to array containing the ELF ABI.
  */
+
 void print_abi(unsigned char *e_ident)
 	{
 	printf("  ABI Version:                       %d\n",
@@ -194,6 +195,7 @@ void print_abi(unsigned char *e_ident)
  * @e_type: type.
  * @e_ident: A pointer to an array
  */
+
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
@@ -228,6 +230,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  * @e_entry: The address.
  * @e_ident: A pointer to an array.
  */
+
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
@@ -252,6 +255,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
  *
  * Description: exit code 98.
  */
+
 void close_elf(int elf)
 {
 	if (close(elf) == -1)
@@ -264,8 +268,8 @@ void close_elf(int elf)
 
 /**
  * main - the Displays of the information that contained.
- * @argc: The number of the arguments.
- * @argv: An array of pointer.
+ * @arg_c: The number of the arguments.
+ * @arg_v: An array of pointer.
  *
  * Return: 0 on success.
  * Description: exit code 98.
