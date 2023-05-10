@@ -176,7 +176,7 @@ void print_osabi(unsigned char *e_ident)
 		printf("UNIX - TRU64\n");
 		break;
 	case ELFOSABI_ARM:
-		printf("AUNIX - RM\n");
+		printf("UNIX - ARM\n");
 		break;
 	case ELFOSABI_STANDALONE:
 		printf("UNIX - Standalone App\n");
