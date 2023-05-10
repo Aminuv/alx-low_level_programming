@@ -71,17 +71,24 @@ void print_class(unsigned char *e_ident)
  */
 
 void print_data(unsigned char *e_ident)
-	{
+{
 	printf("  Data:                              ");
 
-	if (elf->e_ident[EI_DATA] == ELFDATANONE)
-		printf("Unknown data format\n");
-	else if (elf->e_ident[EI_DATA] == ELFDATA2LSB)
+	switch (e_ident[EI_DATA])
+	{
+	case ELFDATANONE:
+		printf("none\n");
+		break;
+	case ELFDATA2LSB:
 		printf("2's complement, little endian\n");
-	else (elf->e_ident[EI_DATA] == ELFDATA2MSB)
-		printf("2's complement, big endian");
+		break;
+	case ELFDATA2MSB:
+		printf("2's complement, big endian\n");
+		break;
+	default:
+		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
 }
-
 /**
  * print_version - the Prints the version.
  * @e_ident: A pointer to an array.
@@ -89,14 +96,19 @@ void print_data(unsigned char *e_ident)
 
 void print_version(unsigned char *e_ident)
 {
-	printf("  Version:                           ");
+	printf("  Version:                           %d",
+	       e_ident[EI_VERSION]);
 
-	if (elf->e_ident[EI_VERSION] == EV_NONE)
-		printf("0 (invalid)\n");
-	else (elf->e_ident[EI_VERSION] == EV_CURRENT)
-		printf("1 (current)\n");
+	switch (e_ident[EI_VERSION])
+	{
+	case EV_CURRENT:
+		printf(" (current)\n");
+		break;
+	default:
+		printf("\n");
+		break;
+	}
 }
-
 
 /**
  * print_osabi - Prints the OS/ABI.
@@ -107,43 +119,42 @@ void print_osabi(unsigned char *e_ident)
 {
 	printf("  OS/ABI:                            ");
 
-	switch (elf->e_ident[EI_OSABI])
+	switch (e_ident[EI_OSABI])
 	{
-		case ELFOSABI_SYSV:
-			printf("UNIX - System V\n");
-			break;
-		case ELFOSABI_HPUX:
-			printf("UNIX - HP-UX\n");
-			break;
-		case ELFOSABI_NETBSD:
-			printf("UNIX - NetBSD\n");
-			break;
-		case ELFOSABI_LINUX:
-			printf("UNIX - Linux\n");
-			break;
-		case ELFOSABI_SOLARIS:
-			printf("UNIX - Solaris\n");
-			break;
-		case ELFOSABI_IRIX:
-			printf("UNIX - IRIX\n");
-			break;
-		case ELFOSABI_FREEBSD:
-			printf("UNIX - FreeBSD\n");
-			break;
-		case ELFOSABI_TRU64:
-			printf("UNIX - TRU64\n");
-			break;
-		case ELFOSABI_ARM:
-			printf("ARM\n");
-			break;
-		case ELFOSABI_STANDALONE:
-			printf("Standalone App\n");
-			break;
-		default:
-			printf("<unknown: %x\n>", elf->e_ident[EI_OSABI]);
+	case ELFOSABI_NONE:
+		printf("UNIX - System V\n");
+		break;
+	case ELFOSABI_HPUX:
+		printf("UNIX - HP-UX\n");
+		break;
+	case ELFOSABI_NETBSD:
+		printf("UNIX - NetBSD\n");
+		break;
+	case ELFOSABI_LINUX:
+		printf("UNIX - Linux\n");
+		break;
+	case ELFOSABI_SOLARIS:
+		printf("UNIX - Solaris\n");
+		break;
+	case ELFOSABI_IRIX:
+		printf("UNIX - IRIX\n");
+		break;
+	case ELFOSABI_FREEBSD:
+		printf("UNIX - FreeBSD\n");
+		break;
+	case ELFOSABI_TRU64:
+		printf("UNIX - TRU64\n");
+		break;
+	case ELFOSABI_ARM:
+		printf("ARM\n");
+		break;
+	case ELFOSABI_STANDALONE:
+		printf("Standalone App\n");
+		break;
+	default:
+		printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
-
 
 /**
  * print_abi - the Prints the ABI version.
@@ -205,7 +216,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 
-	if else (e_ident[EI_CLASS] == ELFCLASS32)
+	else if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
 
 	else
@@ -255,7 +266,7 @@ int main(int __attribute__((__unused__)) arg_c, char *arg_v[])
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", arg_v[1]);
 		exit(98);
 	}
-	r = read(a, header, sizeof(Elf64_Ehdr));
+	b = read(a, header, sizeof(Elf64_Ehdr));
 	if (b == -1)
 	{
 		free(header);
