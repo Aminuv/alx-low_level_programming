@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void check_elf(unsigned char *e_ident);
+void check_elf(unsigned char *e_iden);
 void print_magic(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
 void print_data(unsigned char *e_ident);
@@ -92,7 +92,6 @@ void print_class(unsigned char *e_ident)
  * @e_ident: A pointer to an array.
  *
  */
-
 void print_data(unsigned char *e_ident)
 {
 	printf("  Data:                              ");
@@ -116,7 +115,6 @@ void print_data(unsigned char *e_ident)
  * print_version - the Prints the version.
  * @e_ident: A pointer to an array.
  */
-
 void print_version(unsigned char *e_ident)
 {
 	printf("  Version:                           %d",
@@ -134,10 +132,19 @@ void print_version(unsigned char *e_ident)
 }
 
 /**
+ * print_abi - type the ABI version of an ELF.
+ * @e_ident: A pointer to array containing the ELF ABI.
+ */
+void print_abi(unsigned char *e_ident)
+{
+	printf("  ABI Version:                       %d\n",
+			e_ident[EI_ABIVERSION]);
+}
+
+/**
  * print_osabi - Prints the OS/ABI.
  * @e_ident: A pointer to an array.
  */
-
 void print_osabi(unsigned char *e_ident)
 {
 	printf("  OS/ABI:                            ");
@@ -180,22 +187,10 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - type the ABI version of an ELF.
- * @e_ident: A pointer to array containing the ELF ABI.
- */
-
-void print_abi(unsigned char *e_ident)
-	{
-	printf("  ABI Version:                       %d\n",
-	       e_ident[EI_ABIVERSION]);
-}
-
-/**
  * print_type - the Prints the type
  * @e_type: type.
  * @e_ident: A pointer to an array
  */
-
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
@@ -230,7 +225,6 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  * @e_entry: The address.
  * @e_ident: A pointer to an array.
  */
-
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
@@ -255,7 +249,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
  *
  * Description: exit code 98.
  */
-
 void close_elf(int elf)
 {
 	if (close(elf) == -1)
@@ -274,7 +267,6 @@ void close_elf(int elf)
  * Return: 0 on success.
  * Description: exit code 98.
  */
-
 int main(int __attribute__((__unused__)) arg_c, char *arg_v[])
 {
 	Elf64_Ehdr *header;
