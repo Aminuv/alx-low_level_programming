@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
 	unsigned int x, y;
 	size_t len, add_;
-	char *usr = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+char *usr = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	char pass[] = "      ";
 
 	if (argc != 2)
