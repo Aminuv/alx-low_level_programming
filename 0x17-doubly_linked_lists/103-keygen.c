@@ -23,23 +23,23 @@ int main(int argc, char *argv[])
 	}
 	len = strlen(argv[1]);
 	pass[0] = usr[(len ^ 59) & 63];
-	for (x= 0, add_ = 0; x< len; x++)
+	for (x = 0, add_ = 0; x < len; x++)
 		add_ += argv[1][x];
 	pass[1] = usr[(add_ ^ 79) & 63];
-	for (x= 0, y= 1; x< len; x++)
-		y*= argv[1][x];
-	pass[2] = usr[(y^ 85) & 63];
-	for (y= argv[1][0], x= 0; x< len; x++)
-		if ((char)y<= argv[1][x])
-			y= argv[1][x];
-	srand(y^ 14);
+	for (x = 0, y = 1; x < len; x++)
+		y *= argv[1][x];
+	pass[2] = usr[(y ^ 85) & 63];
+	for (y = argv[1][0], x = 0; x < len; x++)
+		if ((char)y <= argv[1][x])
+			y = argv[1][x];
+	srand(y ^ 14);
 	pass[3] = usr[rand() & 63];
-	for (y= 0, x= 0; x< len; x++)
-		y+= argv[1][x] * argv[1][x];
-	pass[4] = usr[(y^ 239) & 63];
-	for (y= 0, x= 0; (char)x< argv[1][0]; x++)
-		y= rand();
-	pass[5] = usr[(y^ 229) & 63];
+	for (y = 0, x = 0; x < len; x++)
+		y += argv[1][x] * argv[1][x];
+	pass[4] = usr[(y ^ 239) & 63];
+	for (y = 0, x = 0; (char) x < argv[1][0]; x++)
+		y = rand();
+	pass[5] = usr[(y ^ 229) & 63];
 	printf("%s\n", pass);
 	return (0);
 }
