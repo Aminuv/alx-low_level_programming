@@ -193,8 +193,8 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 }
 
 /**
- * shash_table_print - iThe function that prints the keys and The values of a shash table
- *
+ * shash_table_print - iThe function that prints the keys
+ * and The values of a shash table
  * @ht: The pointer to the shash table.
  * Return:
  */
@@ -223,11 +223,9 @@ void shash_table_print(const shash_table_t *ht)
 }
 
 /**
- * shash_table_print_rev - The function tha prints the keys 
+ * shash_table_print_rev - The function tha prints the keys
  * and values of the shash table
- *
  * @ht: The pointer to the shash table.
- *
  * Return:
  */
 
@@ -255,8 +253,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 }
 
 /**
- * shash_table_delete - The function that deletes a shash table.
- *
+ * shash_table_delete - The func that deletes a shash table.
  * @ht: The pointer to the shash table.
  *
  * Return:
