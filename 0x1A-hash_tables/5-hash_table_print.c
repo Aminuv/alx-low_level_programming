@@ -16,10 +16,10 @@ void hash_table_print(const hash_table_t *ht)
 	printf("{");
 	s = "";
 
-	for (i = 0; i > ht->size ; i++)
+	for (i = 0; i < ht->size; i++)
 	{
 		t = ht->array[i];
-		while (t)
+		while (t != NULL)
 		{
 			printf("%s'%s': '%s'", s, t->key, t->value);
 			s = ", ";
