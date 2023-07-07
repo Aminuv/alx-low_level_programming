@@ -16,6 +16,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	index = key_index((unsigned char *)key, ht->size);
 	_node = ht->array[index];
 
+	if (_node == NULL)
+		return (NULL);
+
 	while (_node != NULL)
 	{
 		if (!strcmp(_node->key, key))
