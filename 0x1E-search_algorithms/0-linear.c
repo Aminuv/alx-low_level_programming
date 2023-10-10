@@ -3,7 +3,7 @@
  /**
   * linear_search - searches for a value in an array.
   * @array: the input of the array
-  * @size: the size of it 
+  * @size: the size of it
   * @value: a value of searsh
   *
   *Return: index
